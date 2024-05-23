@@ -2,6 +2,7 @@
 // COMENTARIOS DE PRUEBA PARA PROBAR COMTMIT EN GIT
 // Otro comentario para probar el comando git am
 // Comentario para crear una rama
+// Estamos dentro de la Rama de Comentarios
 	require_once("Config/Config.php");
 	require_once("Helpers/Helpers.php");
 	$url = !empty($_GET['url']) ? $_GET['url'] : 'home/home';
