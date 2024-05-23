@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Orden</title>
+	<style type="text/css">
+		p{
+			font-family: arial;
+			letter-spacing: 1px;
+			color: #black;
+			font-size: 12px;
+		}
+		hr{border: 0; border-top: 1px solid #CCC;}
+		h4{font-family: arial; margin: 0}
+		table{width: 100%; max-width: 600px; margin: 10px auto; border: 1px solid #CCC; border-spacing: 0;}
+		table tr td, table tr th{padding: 5px 10px; font-family: arial; font-size: 12px;}
+		#detalleOrden tr td{border: 1px solid #CCC;}
+		.table_active{background-color: #CCC;}
+		.text-center{text-align: center;}
+		.text-right{text-align: right;}
+		@media screen and (max-width: 470px){
+			.logo{width: 90px;}
+			p,table tr td, table tr th{font-size: 9px;}
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<br>
+		<p class="text-center">Se ha generado una orden de pedido, pronto estaremos en contacto con usted.</p>
+		<br>
+		<hr>
+		<br>
+		<table>
+			<tr>
+				<td width="33.33%">
+					<img class="logo" src="http://localhost:8080/tiendaprueba/Assets/tienda/images/icons/logo-01.png" alt="Logo">
+				</td>
+				<td width="33.33%">
+					<div class="text-center">
+						<h4><strong>SISTEMA DE VENTAS <?php NOMBRE_EMPRESA?></strong><br></h4>
+						<p>
+							Calle Venecia 932, int 102, Belcanto <br>
+							Teléfono: +(33) 1759 5659 <br>
+							Email: diego5julio2001@gmail.com
+						</p>
+					</div>
+				</td>
+				<td width="33.33%">
+					<div class="text-right">
+						<p>
+							No. Orden: <strong>000001</strong><br>
+							Fecha: 04/04/2024 <br>
+							Método Pago: PayPal <br>
+							Transacción: 1412353212
+
+						</p>
+					</div>
+				</td>
+			</tr>			
+		</table>
+		<table>
+			<tr>
+				<td width="140">Nombre:</td>
+				<td>Diego López</td>
+			</tr>
+			<tr>
+				<td>Teléfono:</td>
+				<td>3317595659</td>
+			</tr>
+			<tr>
+				<td>Dirección de envío:</td>
+				<td>Av. Jesus Michel Guadalajara</td>
+			</tr>
+		</table>
+		<table>
+			<thead class="table_active">
+				<tr>
+					<th>Descripcion</th>
+					<th class="text-right">Precio</th>
+					<th class="text-center">Cantidad</th>
+					<th class="text-right">Importe</th>
+				</tr>
+			</thead>
+			<tbody id="detalleOrden">
+				<tr>
+					<td>Teclado USB</td>
+					<td class="text-right">100</td>
+					<td class="text-center">2</td>
+					<td class="text-right">200</td>
+				</tr>
+			</tbody>
+			<tfoot>
+				<tr>
+					<th colspan="3" class="text-right">Subtotal:</th>
+					<td class="text-right">200</td>
+				</tr>
+				<tr>
+					<th colspan="3" class="text-right">Envío:</th>
+					<td class="text-right">10</td>
+				</tr>
+				<tr>
+					<th colspan="3" class="text-right">Total:</th>
+					<td class="text-right">200</td>
+				</tr>
+			</tfoot>
+		</table>
+		<div class="text-center">
+			<p>Si tienes alguna duda sobre tu pedido, <br>pongase en contacto a nuestro Teléfono o Email</p>
+			<h4>¡Gracias por su preferencia!</h4>
+		</div>
+	</div>
+</body>
+</html>
