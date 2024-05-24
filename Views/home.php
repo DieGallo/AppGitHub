@@ -3,6 +3,11 @@
   $arrSlider = $data['slider'];
   $arrBanner = $data['banner'];
   $arrProductos = $data['productos'];
+
+  $contentPage = "";
+  if(!empty($data['page'])){
+    $contentPage = $data['page']['contenido'];
+  }
 ?>
   <!-- Slider -->
   <section class="section-slide">
@@ -136,6 +141,11 @@
           Ver más
         </a>
       </div>
+    </div>
+
+    <div class="container text-center p-t-80">
+      <hr>
+      <?= $contentPage; ?>
     </div>
   </section>
 <?php

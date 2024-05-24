@@ -4,15 +4,21 @@
 		{
 			parent::__construct();
 			session_start();
+			getPermisos(MPAGINAS);
 		}
-
+		
 		public function nosotros()
 		{
-			$data['page_tag'] = NOMBRE_EMPRESA;
-			$data['page_title'] = NOMBRE_EMPRESA;
-			$data['page_name'] = "tienda_virtual";
-			$this->views->getView($this,"nosotros",$data);
+			$pageContent = getPageRout('nosotros');
+			if(empty($pageContent)){
+				header("Location: ".base_url());
+			}else{
+				$data['page_tag'] = NOMBRE_EMPRESA;
+				$data['page_title'] = NOMBRE_EMPRESA." - ".$pageContent['titulo'];
+				$data['page_name'] = $pageContent['titulo'];
+				$data['page'] = $pageContent;
+				$this->views->getView($this,"nosotros",$data);
+			}
 		}
-
 	}
  ?>

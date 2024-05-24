@@ -282,7 +282,7 @@
 						$subtotal += $pro['cantidad'] * $pro['precio'];
 					}
 					$monto = formatMoney($subtotal + COSTOENVIO);
-					// Pago contra entrega
+					// Otros métodos de pago
 					if(empty($_POST['datapay'])){
 						//Crear pedido
 						$request_pedido = $this->insertPedido($idtransaccionpaypal, 

@@ -28,6 +28,8 @@
       $urlWeb = base_url().'/tienda/producto/'.$data['producto']['idproducto'].'/'.$data['producto']['ruta'];
       $urlImg = $data['producto']['images'][0]['url_image'];
     }
+    $tituloPreguntas = !empty(getInfoPage(PPREGUNTAS)) ? getInfoPage(PPREGUNTAS)['titulo'] : "";
+    $infoPreguntas = !empty(getInfoPage(PPREGUNTAS)) ? getInfoPage(PPREGUNTAS)['contenido'] : "";
   ?>
   <meta preperty="og:locale" content="es_ES"/>
   <meta preperty="og:type" content="website"/>
@@ -73,25 +75,15 @@
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" >Preguntas Frecuentes</h5>
+          <h5 class="modal-title" ><?= $tituloPreguntas; ?></h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-          <p>Lorem ipsum dolor sit, amet, consectetur adipisicing elit. Nam sunt culpa aliquam et cumque optio non quia dolorem esse quod debitis corrupti dignissimos id nisi sapiente in dolore voluptatem, vitae? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Totam iusto illo ea, accusamus asperiores eius omnis labore cum numquam iste, mollitia beatae fuga corporis, neque necessitatibus veniam error quia alias. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><br>
-
-          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reprehenderit beatae in maiores vel ut aut vero nam autem voluptatum, adipisci recusandae consequatur, aliquid quis laborum facilis distinctio non placeat, sit?Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <div class="page-content">
+            <?= $infoPreguntas; ?>
+          </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -172,6 +164,10 @@
 
               <li>
                 <a href="<?= base_url(); ?>/nosotros">Nosotros</a>
+              </li>
+
+              <li>
+                <a href="<?= base_url(); ?>/sucursales">Sucursales</a>
               </li>
 
               <li>
@@ -264,13 +260,8 @@
           <a href="<?= base_url(); ?>">Inicio</a>
         </li>
 
-        <li class="label1" data-label1="hot">
+        <li class="label1">
           <a href="<?= base_url(); ?>/tienda">Tienda</a>
-          <ul class="sub-menu">
-            <li><a href="index.html">Categoria1</a></li>
-            <li><a href="home-02.html">Categoria2</a></li>
-            <li><a href="home-03.html">Categoria3</a></li>
-          </ul>
         </li>
 
         <li>
@@ -278,11 +269,11 @@
         </li>
 
         <li>
-          <a href="<?= base_url(); ?>/nosotros">Empresa</a>
+          <a href="<?= base_url(); ?>/nosotros">Nosotros</a>
         </li>
 
         <li>
-          <a href="<?= base_url(); ?>/catalogo">Catálogo</a>
+          <a href="<?= base_url(); ?>/sucursales">Sucursales</a>
         </li>
 
         <li>

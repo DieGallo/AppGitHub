@@ -1,6 +1,7 @@
 <?php
   headerTienda($data);
-  $banner = media()."/tienda/images/bg-01.jpg";
+  $banner = $data['page']['portada'];
+  $idpagina = $data['page']['idpost'];
 ?>	
 
 <script>
@@ -13,7 +14,9 @@
 		Contacto
 	</h2>
 </section>
-
+<?php
+	if(viewPage($idpagina)){
+?>
 	<!-- Content page -->
 	<section class="bg0 p-t-104 p-b-116">
 		<div class="container">
@@ -95,14 +98,22 @@
 				</div>
 			</div>
 		</div>
-	</section>	
-	
-	
-	<!-- Map -->
-	<div class="map">
-		<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d933.9357505348714!2d-103.3900614715012!3d20.557693554508266!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x842f52cf7b6d12b1%3A0x76e3e27e9970cc39!2sAv.%20Belcanto%20932%2C%2045654%20Belcanto%2C%20Jal.!5e0!3m2!1ses!2smx!4v1714929212086!5m2!1ses!2smx" width="100%" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-	</div>
+	</section>
 
 <?php
+		echo $data['page']['contenido'];
+	}else{
+?>
+
+<!-- VISTA EN CONSTRUCCION PARA EL CLIENTE -->
+<div>
+	<div class="container-fluid py-5 txt-center">
+		<img src="<?= media() ?>/images/uploads/construction.png" alt="Foto construccion">
+		<h3>Estamos trabajando para usted.</h3>
+	</div>
+</div>
+
+<?php  
+	}
   footerTienda($data);
 ?>		

@@ -22,7 +22,7 @@
 		<p>Hemos recibido una solicitud de tu correo: <?= $data['email'];?> para reestablecer tu contraseña. Si no has solicitado esto, por favor ignora este mensaje.</p>
 		<p>Por favor, sigue el siguiente enlace para crear una nueva contraseña:</p>
 		<p style='text-align: center;'><a href='<?= $data['url_recovery']; ?>' class='button'>Reestablecer Contraseña</a></p>
-		<div class='privacy'>Tu privacidad es importante para nosotros. Para más información, consulta nuestro <a href='<?= WEB_EMPRESA; ?>'>Tienda Virtual</a>.</div>
+		<div class='privacy'>Tu privacidad es importante para nosotros. Para más información, consulta nuestro <a href='<?= BASE_URL; ?>'>Tienda Virtual</a>.</div>
 		</div>
 		</div>
 	</body>

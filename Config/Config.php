@@ -76,6 +76,17 @@
 	const MCONTACTO = 8;
 	const MPAGINAS = 9;
 
+	// Paginas
+	const PINICIO = 1;
+	const PTIENDA = 2;
+	const PCARRITO = 3;
+	const PNOSOTROS = 4;
+	const PCONTACTO = 5;
+	const PPREGUNTAS = 6;
+	const PTERMINOS = 9;
+	const PSUCURSALES = 10;
+	const PNOTFOUND = 11;
+
 	// Roles
 	const RCLIENTES = 7;
 	const RADM = 1;

@@ -17,8 +17,8 @@
 			if(empty($_SESSION['permisosMod']['r'])){
 				header("Location:".base_url().'/dashboard');
 			}
-			$data['page_tag'] = "Categorias";
-			$data['page_title'] = "CATEGORIAS <small>Tienda Virtual</small>";
+			$data['page_tag'] = "Categorias y Promociones";
+			$data['page_title'] = "CATEGORIAS & PROMOCIONES <small>Tienda Virtual</small>";
 			$data['page_name'] = "categorias";
 			$data['page_functions_js'] = "functions_categorias.js";
 			$this->views->getView($this,"categorias",$data);
@@ -46,7 +46,7 @@
 					$imgPortada 	= 'portada_categoria.png';
 					$request_cateria = "";
 					if($nombre_foto != ''){
-						$imgPortada = 'img_'.md5(date('d-m-Y H:m:s')).'.jpg';
+						$imgPortada = 'img_'.md5(date('d-m-Y H:i:s')).'.jpg';
 					}
 
 					if($intIdcategoria == 0)

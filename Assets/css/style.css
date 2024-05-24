@@ -81,6 +81,13 @@
     background-position: center center;
     margin: auto;
 }
+
+.prevPortada{
+	width: 100%;
+	min-width: 200px;
+	background: none;
+}
+
 .prevPhoto label{
 	cursor: pointer;
 	width: 100%;
@@ -228,4 +235,51 @@
 
 .ui-datepicker-calendar{
 	display: none;
+}
+
+.page-content ul li {
+	list-style-type: disc;
+	margin-left: 15px;
+	margin-bottom: 10px;
+}
+
+.page-content ol li {
+	list-style-type: decimal;
+	margin-left: 15px;
+	margin-bottom: 10px;
+}
+
+.page-content ul li ul li, .page-content ol li ul li{
+	list-style-type: circle;
+	list-style-position: inside;
+	margin-bottom: 10px;
+}
+
+.page-content ol li ol li, .page-content ul li ol li{
+	list-style-type: lower-latin;
+	list-style-position: inside;
+	margin-bottom: 10px;
+}
+
+.page-error{
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	flex-direction: column;
+	min-height: calc(100vh - 110px);
+	margin-bottom: 0;
+}
+
+.page-error h1{
+	margin: 10px;
+	color: #dc3545;
+	font-size: 42px;
 }

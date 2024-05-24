@@ -6,6 +6,9 @@ foreach ($_SESSION['arrCarrito'] as $producto) {
 	$subtotal += $producto['precio'] * $producto['cantidad'];
 }
 $total = $subtotal + COSTOENVIO;
+
+$tituloTerminos = !empty(getInfoPage(PTERMINOS)) ? getInfoPage(PTERMINOS)['titulo'] : "";
+$infoTerminos = !empty(getInfoPage(PTERMINOS)) ? getInfoPage(PTERMINOS)['contenido'] : "";
 ?>
 <script
 	src="https://www.paypal.com/sdk/js?client-id=<?= IDCLIENTE ?>&currency=<?= CURRENCY ?>">	
@@ -64,25 +67,15 @@ $total = $subtotal + COSTOENVIO;
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" >Términos y Condiciones</h5>
+        <h5 class="modal-title"><?= $tituloTerminos; ?></h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <p>Lorem ipsum dolor sit, amet, consectetur adipisicing elit. Nam sunt culpa aliquam et cumque optio non quia dolorem esse quod debitis corrupti dignissimos id nisi sapiente in dolore voluptatem, vitae? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Totam iusto illo ea, accusamus asperiores eius omnis labore cum numquam iste, mollitia beatae fuga corporis, neque necessitatibus veniam error quia alias. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><br>
-
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reprehenderit beatae in maiores vel ut aut vero nam autem voluptatum, adipisci recusandae consequatur, aliquid quis laborum facilis distinctio non placeat, sit?Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      	<div class="page-content">
+      		<?= $infoTerminos; ?>
+      	</div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -260,7 +253,7 @@ $total = $subtotal + COSTOENVIO;
 								<div>
 									<label for="contraentrega">
 										<input type="radio" id="contraentrega" class="methodpago" name="payment-method" value="CT">
-										<span>Contra Entrega</span>
+										<span>Otros métodos de pago</span>
 									</label>
 								</div>
 								<div id="divtipopago" class="notblock">

@@ -1,5 +1,12 @@
 <?php 
 
+    use PHPMailer\PHPMailer\PHPMailer;
+    use PHPMailer\PHPMailer\Exception;
+
+    require 'Libraries/PHPMailer/Exception.php';
+    require 'Libraries/PHPMailer/PHPMailer.php';
+    require 'Libraries/PHPMailer/SMTP.php';
+
 	//Retorla la url del proyecto
 	function base_url()
 	{
@@ -60,7 +67,7 @@
         $emailDestino = $data['email'];
         $empresa = NOMBRE_REMITENTE;
         $remitente = EMAIL_REMITENTE;
-        $emailCopia =  !empty($data['emailCopia'] ? $data['emailCopia'] : "");
+        $emailCopia =  !empty($data['emailCopia']) ? $data['emailCopia'] : "";
         //ENVIO DE CORREO
         $de = "MIME-Version: 1.0\r\n";
         $de .= "Content-type: text/html; charset=UTF-8\r\n";
@@ -73,19 +80,58 @@
         return $send;
     }
 
+    function sendMailLocal($data,$template){
+        //Create an instance; passing `true` enables exceptions
+        $mail = new PHPMailer(true);
+        ob_start();
+        require_once("Views/Template/Email/".$template.".php");
+        $mensaje = ob_get_clean();
+
+        try {
+            //Server settings
+            $mail->SMTPDebug = 1;                      //Enable verbose debug output
+            $mail->isSMTP();                                            //Send using SMTP
+            $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+            $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+            $mail->Username   = 'diego5julio2001@gmail.com';                   //SMTP username
+            $mail->Password   = 'Xdloldiego2001';                               //SMTP password
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+            $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS
+
+            //Recipients
+            $mail->setFrom('diego5julio2001@gmail.com', 'Servidor Local');
+            $mail->addAddress($data['email']);     //Add a recipient
+            if(!empty($data['emailCopia'])){
+                $mail->addBCC($data['emailCopia']);
+            }
+
+            //Content
+            $mail->isHTML(true);                                  //Set email format to HTML
+            $mail->Subject = $data['asunto'];
+            $mail->Body    = $mensaje;
+
+            $mail->send();
+            echo 'Mensaje enviado';
+        } catch (Exception $e) {
+            echo "Error en el envio de mensaje: {$mail->ErrorInfo}";
+        }
+    }
+
     function getPermisos(int $idmodulo) {
         require_once("Models/PermisosModel.php");
         $objPermisos = new PermisosModel();
-        $idrol = $_SESSION['userData']['idrol'];
-        $arrPermisos = $objPermisos->permisosModulo($idrol);
-        $permisos = '';
-        $permisosMod = '';
-        if(count($arrPermisos) > 0) {
-            $permisos = $arrPermisos;
-            $permisosMod = isset($arrPermisos[$idmodulo]) ? $arrPermisos[$idmodulo] : "";
+        if(!empty($_SESSION['userData'])){
+            $idrol = $_SESSION['userData']['idrol'];
+            $arrPermisos = $objPermisos->permisosModulo($idrol);
+            $permisos = '';
+            $permisosMod = '';
+            if(count($arrPermisos) > 0) {
+                $permisos = $arrPermisos;
+                $permisosMod = isset($arrPermisos[$idmodulo]) ? $arrPermisos[$idmodulo] : "";
+            }
+            $_SESSION['permisos'] = $permisos;
+            $_SESSION['permisosMod'] = $permisosMod;
         }
-        $_SESSION['permisos'] = $permisos;
-        $_SESSION['permisosMod'] = $permisosMod;
     }
 
 
@@ -323,6 +369,29 @@
         $sql = "SELECT * FROM post WHERE idpost = $idpagina";
         $request = $con->select($sql);
         return $request;
+    }
+
+    function getPageRout(string $ruta){
+        require_once("Libraries/Core/Mysql.php");
+        $con = new Mysql();
+        $sql = "SELECT * FROM post WHERE ruta = '$ruta' AND status != 0";
+        $request = $con->select($sql);
+        if(!empty($request)){
+            $request['portada'] = $request['portada'] != "" ? media()."/images/uploads/".$request['portada'] : "";
+        }
+        return $request;
+    }
+
+    function viewPage(int $idpagina){
+        require_once("Libraries/Core/Mysql.php");
+        $con = new Mysql();
+        $sql = "SELECT * FROM post WHERE idpost = $idpagina";
+        $request = $con->select($sql);
+        if(($request['status'] == 2 AND isset($_SESSION['permisosMod']) AND $_SESSION['permisosMod']['u'] == true) OR $request['status'] == 1){
+            return true;
+        }else{
+            return false;
+        }
     }
 
  ?>

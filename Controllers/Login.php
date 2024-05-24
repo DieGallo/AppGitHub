@@ -74,7 +74,10 @@
 						$url_recovery = base_url() . '/login/confirmUser/' . $strEmail . '/' . $token;
 						$requestUpdate = $this->model->setTokenUser($idpersona,$token);
 
-						$dataUsuario = array('nombreUsuario' => $nombreUsuario, 'email' => $strEmail, 'asunto' => 'Recuperar cuenta - '.NOMBRE_REMITENTE, 'url_recovery' => $url_recovery);
+						$dataUsuario = array('nombreUsuario' => $nombreUsuario, 
+											'email' => $strEmail, 
+											'asunto' => 'Recuperar cuenta - '.NOMBRE_REMITENTE, 
+											'url_recovery' => $url_recovery);
 
 						if($requestUpdate) {
 							$sendEmail = sendEmail($dataUsuario, 'email_cambioPassword');

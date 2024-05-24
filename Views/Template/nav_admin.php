@@ -55,7 +55,7 @@
                 <li><a class="treeview-item" href="<?= base_url(); ?>/productos"><i class="icon fa fa-circle-o"></i> Productos</a></li>
                 <?php } ?>
                 <?php if(!empty($_SESSION['permisos'][6]['r'])) { ?>
-                <li><a class="treeview-item" href="<?= base_url(); ?>/categorias"><i class="icon fa fa-circle-o"></i> Categorias</a></li>
+                <li><a class="treeview-item" href="<?= base_url(); ?>/categorias"><i class="icon fa fa-circle-o"></i> Categorias y Promociones</a></li>
                 <?php } ?>
             </ul>
         </li>
