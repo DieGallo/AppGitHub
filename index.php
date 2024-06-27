@@ -1,6 +1,7 @@
 <?php 
 	require_once("Config/Config.php");
 	require_once("Helpers/Helpers.php");
+	// Nuevo comentario para retomar el curso de GitHub
 	$url = !empty($_GET['url']) ? $_GET['url'] : 'home/home';
 	$arrUrl = explode("/", $url);
 	$controller = $arrUrl[0];
