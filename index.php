@@ -3,6 +3,8 @@
 // Otro comentario para probar el comando git am
 // Comentario para crear una rama
 // Estamos dentro de la Rama de Comentarios
+
+// Rama Comentarios, este comentario es para probar Merge
 	require_once("Config/Config.php");
 	require_once("Helpers/Helpers.php");
 	$url = !empty($_GET['url']) ? $_GET['url'] : 'home/home';
