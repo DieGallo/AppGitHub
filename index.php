@@ -1,4 +1,10 @@
 <?php 
+// COMENTARIOS DE PRUEBA PARA PROBAR COMTMIT EN GIT
+// Otro comentario para probar el comando git am
+// Comentario para crear una rama
+// Estamos dentro de la Rama de Comentarios
+
+// Rama Comentarios, este comentario es para probar Merge
 	require_once("Config/Config.php");
 	require_once("Helpers/Helpers.php");
 	// Nuevo comentario para retomar el curso de GitHub 
