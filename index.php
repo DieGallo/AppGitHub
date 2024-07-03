@@ -1,4 +1,7 @@
 <?php 
+
+// CONFLICTOS Y SOLICIONES DE MERGE ESTAMOS EN RAMA MASTER
+
 // COMENTARIOS DE PRUEBA PARA PROBAR COMTMIT EN GIT
 // Otro comentario para probar el comando git am
 // Comentario para crear una rama
